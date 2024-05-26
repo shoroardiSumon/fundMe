@@ -4,6 +4,8 @@ import 'package:fundme/utils/color_constant.dart';
 import 'package:fundme/utils/custom_widget/custom_primary_button.dart';
 import 'package:fundme/views/check_screen.dart';
 import 'package:fundme/views/donate_screen.dart';
+import 'package:fundme/views/police_report_screen.dart';
+import 'package:fundme/views/suggestion_screen.dart';
 import 'package:fundme/views/update_ip.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 350,
+                  height: 250,
                   width: double.infinity,
                   padding: const EdgeInsets.all(10),
                   alignment: Alignment.center,
@@ -41,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 60,),
 
                 CustomPrimaryButton(
-                  title: "Check", 
+                  title: "Prediction", 
                   isTrailing: true, 
                   onTap: () {
                     Navigator.of(context).push(appNavigator(const CheckScreen(), const Offset(1, 0), 500));
@@ -55,6 +57,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   isTrailing: true, 
                   onTap: () {
                     Navigator.of(context).push(appNavigator(const DonateScreen(), const Offset(1, 0), 500));
+                  },
+                ),
+
+                const SizedBox(height: 20,),
+
+                CustomPrimaryButton(
+                  title: "Suggestion", 
+                  isTrailing: true, 
+                  onTap: () {
+                    Navigator.of(context).push(appNavigator(const SuggestionScreen(), const Offset(1, 0), 500));
+                  },
+                ),
+
+                const SizedBox(height: 20,),
+
+                CustomPrimaryButton(
+                  title: "Police Report", 
+                  isTrailing: true, 
+                  onTap: () {
+                    Navigator.of(context).push(appNavigator(const PoliceReportScreen(), const Offset(1, 0), 500));
                   },
                 )
               ],

@@ -32,7 +32,7 @@ class _CheckScreenState extends State<CheckScreen> {
     return Scaffold(
       backgroundColor: AppColors.appBodyBgColor,
       appBar: const CustomAppBar(
-        title: "Check",
+        title: "Prediction",
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -63,6 +63,34 @@ class _CheckScreenState extends State<CheckScreen> {
                     _buildDropdown('Previous Record', checkProvider.selectedPreviousRecord, checkProvider.previousRecordItems, (value) {
                       checkProvider.updatePreviousRecordDDWN(value!);
                     }),
+                    const SizedBox(height: 15),
+                    _buildDropdown('Address Verification', checkProvider.selectedAddressVerification, checkProvider.addressVerificationItems, (value) {
+                      checkProvider.updateAddressVerificationDDWN(value!);
+                    }),
+                    const SizedBox(height: 15),
+                    _buildDropdown('Project Credibility', checkProvider.selectedProjectCredibility, checkProvider.projectCredibilityItems, (value) {
+                      checkProvider.updateProjectCredibilityDDWN(value!);
+                    }),
+                    const SizedBox(height: 15),
+                    _buildDropdown('Is The Campaign Realistic?', checkProvider.selectedIsTheCampaignRealistic, checkProvider.isTheCampaignRealisticItems, (value) {
+                      checkProvider.updateIsTheCampaignRealisticDDWN(value!);
+                    }),
+                    const SizedBox(height: 15),
+                    _buildDropdown('Calculation of Money', checkProvider.selectedCalculationOfMoney, checkProvider.calculationOfMoneyItems, (value) {
+                      checkProvider.updateCalculationOfMoneyDDWN(value!);
+                    }),
+                    const SizedBox(height: 15),
+                    _buildDropdown('Is The Source Credible?', checkProvider.selectedIsTheSourceCredible, checkProvider.isTheSourceCredibleItems, (value) {
+                      checkProvider.updateIsTheSourceCredibleDDWN(value!);
+                    }),
+                    const SizedBox(height: 15),
+                    _buildDropdown('Rate of Crowd Funding Platforms', checkProvider.selectedRateOfCrowdFundingPlatforms, checkProvider.rateOfCrowdFundingPlatformsItems, (value) {
+                      checkProvider.updateRateOfCrowdFundingPlatformsDDWN(value!);
+                    }),
+                    const SizedBox(height: 15),
+                    _buildDropdown('Advertisement Cost', checkProvider.selectedAdvertisementCost, checkProvider.advertisementCostItems, (value) {
+                      checkProvider.updateAdvertisementCostDDWN(value!);
+                    }),
 
                     const SizedBox(height: 60,),
 
@@ -70,7 +98,15 @@ class _CheckScreenState extends State<CheckScreen> {
                         && checkProvider.selectedTargetAmount != null 
                         && checkProvider.selectedNumberOfBakers != null
                         && checkProvider.selectedBackersFeedback != null
-                        && checkProvider.selectedPreviousRecord != null? 
+                        && checkProvider.selectedPreviousRecord != null
+                        && checkProvider.selectedAddressVerification != null 
+                        && checkProvider.selectedProjectCredibility != null
+                        && checkProvider.selectedIsTheCampaignRealistic != null
+                        && checkProvider.selectedCalculationOfMoney != null
+                        && checkProvider.selectedIsTheSourceCredible != null 
+                        && checkProvider.selectedRateOfCrowdFundingPlatforms != null
+                        && checkProvider.selectedAdvertisementCost != null? 
+
                     Skeletonizer(
                       enabled: checkProvider.isLoading,
                       ignoreContainers: false,
@@ -81,7 +117,6 @@ class _CheckScreenState extends State<CheckScreen> {
                         isTrailing: false, 
                         onTap: () async{
                           var response = await checkProvider.makePredictionRequest(context);
-                          print("MyRESSSSSS: " + response);
                           if(response == "Successful" || response == "Unsuccessful"){
                             Navigator.of(context).push(appNavigator(ResultScreen(result: response), const Offset(1, 0), 500));
                           }else {
@@ -96,19 +131,13 @@ class _CheckScreenState extends State<CheckScreen> {
                           }
                         },
                       ),
-                    )
-                    // : CustomLoadingPrimaryButton(
-                    //   title: "",
-                    //   isTrailing: false,
-                    //   onTap: () {},
-                    // )
-                     : CustomSecondaryButton(
+                    ) : CustomSecondaryButton(
                       title: "Result", 
                       isTrailing: false, 
                       onTap: () {},
                     ),
 
-                    const SizedBox(height: 20,),
+                    const SizedBox(height: 50,),
                   ],
                 ),
               );
@@ -125,7 +154,7 @@ class _CheckScreenState extends State<CheckScreen> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
-          flex: 2,
+          flex: 1,
           child: Text(
             label,
             style: const TextStyle(
@@ -136,7 +165,7 @@ class _CheckScreenState extends State<CheckScreen> {
         ),
         const SizedBox(width: 2,),
         Expanded(
-          flex: 3,
+          flex: 1,
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
