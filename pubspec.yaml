@@ -40,6 +40,10 @@ dependencies:
   dio:
   skeletonizer:
   shared_preferences:
+  flutter_typeahead:
+  url_launcher:
+  # http:
+  # geolocator:
 
 dev_dependencies:
   flutter_test:

@@ -47,7 +47,6 @@ class CheckProvider extends ChangeNotifier{
   String? get selectedNumberOfBakers => _selectedNumberOfBakers;
   String? get selectedBackersFeedback => _selectedBackersFeedback;
   String? get selectedPreviousRecord => _selectedPreviousRecord;
-
   String? get selectedAddressVerification => _selectedAddressVerification;
   String? get selectedProjectCredibility => _selectedProjectCredibility;
   String? get selectedIsTheCampaignRealistic => _selectedIsTheCampaignRealistic;
